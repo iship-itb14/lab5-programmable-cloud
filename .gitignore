@@ -1,0 +1,6 @@
+service-credentials.json
+*-credentials.json
+__pycache__/
+service-credentials.json
+*-credentials.json
+__pycache__/
