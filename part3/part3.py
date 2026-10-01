@@ -1,20 +1,5 @@
 #!/usr/bin/env python3
-"""
-Part 3 (Cloud Client Libraries version) - Use a service account to create VM1; VM1 then runs Part 1 to create VM2.
 
-This program authenticates explicitly with the service-account key file (not your
-own user credentials) and creates VM1. VM1's metadata carries:
-  part1-py             Part 1's program
-  vm2-startup-script   Part 1's startup script (for VM2)
-  service-credentials  the service-account key, so VM1's code can call the API
-  project / zone / vm2-name / repo-url / app-subdir
-VM1's startup script (vm1-startup.sh) installs the Python client libraries, writes
-those files to disk, and runs part1.py with GOOGLE_APPLICATION_CREDENTIALS set to
-the key. VM1 has NO default service account attached, so the only way it can create
-VM2 is with the credentials we handed it.
-
-Create the service account and key first (see HOW_TO_RUN.md). Never commit the key.
-"""
 import argparse
 import os
 import pathlib

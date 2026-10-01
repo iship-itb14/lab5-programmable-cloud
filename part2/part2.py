@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
-"""
-Part 2 (Cloud Client Libraries version) - Snapshot the Part 1 VM, turn the snapshot
-into an image, and time three new instances created from it.
 
-  InstancesClient.get          -> find the Part 1 VM's boot disk
-  DisksClient.create_snapshot  -> snapshot named base-snapshot-<instance>
-  ImagesClient.insert          -> custom image with source_snapshot = that snapshot
-  InstancesClient.insert x3    -> clones booting from the image (or, with
-                                  --from-snapshot, straight from the snapshot), timed
-
-The disk already holds the installed app and its enabled systemd service, so the
-clones need no startup script. Results are written to TIMING.md next to this file.
-"""
 import argparse
 import pathlib
 import sys

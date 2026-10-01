@@ -1,27 +1,5 @@
 #!/usr/bin/env python3
-"""
-Part 1 (Cloud Client Libraries version) - Create a VM that installs a web app from
-git and serves it on port 5000.
 
-Uses google-cloud-compute (`from google.cloud import compute_v1`) instead of the
-discovery-based google-api-python-client. Each step is one typed client call:
-  FirewallsClient.list / insert       -> firewall rule "allow-5000": tcp:5000 from 0.0.0.0/0
-                                         to instances with network tag "allow-5000"
-  ImagesClient.get_from_family        -> current image in the ubuntu-2204-lts family
-  InstancesClient.insert              -> f1-micro VM in us-west1-b, default network,
-                                         ONE_TO_ONE_NAT external IP, startup script in metadata
-  InstancesClient.set_tags            -> apply the "allow-5000" network tag
-  InstancesClient.get                 -> read the external IP
-Mutating calls return an ExtendedOperation; .result() blocks until it finishes.
-
-Attribution: the instance configuration and startup-script approach are adapted from
-Google's compute/api/create_instance.py sample in
-https://github.com/GoogleCloudPlatform/python-docs-samples (Apache License 2.0),
-ported from googleapiclient to google-cloud-compute.
-
-Credentials: Application Default Credentials (`gcloud auth application-default login`),
-or a service-account key via GOOGLE_APPLICATION_CREDENTIALS (Part 3).
-"""
 import argparse
 import os
 import pathlib
